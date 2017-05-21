@@ -1,28 +1,23 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<nav class="col-md-2 columns" id="actions-sidebar">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a><?= __('Actions') ?></a></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $type->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $type->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Types'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Tasks'), ['controller' => 'Tasks', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Task'), ['controller' => 'Tasks', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List {0}', 'Types'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List {0}', 'Tasks'), ['controller' => 'Tasks', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New {0}', 'Task'), ['controller' => 'Tasks', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="types form large-9 medium-8 columns content">
+<div class="types form col-md-10 columns content">
     <?= $this->Form->create($type) ?>
     <fieldset>
-        <legend><?= __('Edit Type') ?></legend>
+        <legend><?= 'Edit Type' ?></legend>
         <?php
-            echo $this->Form->control('title');
+            echo $this->Form->input('title');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

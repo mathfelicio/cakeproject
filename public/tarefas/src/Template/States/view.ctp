@@ -1,51 +1,46 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit State'), ['action' => 'edit', $state->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete State'), ['action' => 'delete', $state->id], ['confirm' => __('Are you sure you want to delete # {0}?', $state->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List States'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New State'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Tasks'), ['controller' => 'Tasks', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Task'), ['controller' => 'Tasks', 'action' => 'add']) ?> </li>
+<nav class="col-lg-2 col-md-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href=""><?= __('Actions') ?></a></li>
+        <li><?= $this->Html->link(__('Edit {0}', ['State']), ['action' => 'edit', $state->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete {0}', ['State']), ['action' => 'delete', $state->id], ['confirm' => __('Are you sure you want to delete # {0}?', $state->id)]) ?> </li>
+        <li><?= $this->Html->link(__('List {0}', ['States']), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New {0}', ['State']), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List {0}', ['Tasks']), ['controller' => 'Tasks', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New {0}', ['Task']), ['controller' => 'Tasks', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="states view large-9 medium-8 columns content">
+<div class="states view col-lg-10 col-md-9">
     <h3><?= h($state->title) ?></h3>
-    <table class="vertical-table">
+    <table class="table table-striped table-hover">
         <tr>
-            <th scope="row"><?= __('Title') ?></th>
+            <th>Title</th>
             <td><?= h($state->title) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
+            <th>'Id</th>
             <td><?= $this->Number->format($state->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($state->created) ?></td>
+            <th>Created</th>
+            <td><?= h($state->created) ?></tr>
         </tr>
         <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($state->modified) ?></td>
+            <th>Modified</th>
+            <td><?= h($state->modified) ?></tr>
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Tasks') ?></h4>
+        <h4><?= __('Related {0}', ['Tasks']) ?></h4>
         <?php if (!empty($state->tasks)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table table-striped table-hover">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Type Id') ?></th>
-                <th scope="col"><?= __('State Id') ?></th>
-                <th scope="col"><?= __('Title') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th>Id</th>
+                <th>Type Id</th>
+                <th>State Id</th>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Modified</th>
+                <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($state->tasks as $tasks): ?>
             <tr>
@@ -57,12 +52,15 @@
                 <td><?= h($tasks->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Tasks', 'action' => 'view', $tasks->id]) ?>
+
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Tasks', 'action' => 'edit', $tasks->id]) ?>
+
                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Tasks', 'action' => 'delete', $tasks->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tasks->id)]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <?php endif; ?>
+    <?php endif; ?>
     </div>
 </div>

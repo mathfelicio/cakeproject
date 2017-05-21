@@ -19,6 +19,7 @@ class UsersControllerTest extends IntegrationTestCase
         'app.users',
         'app.tasks',
         'app.types',
+        'app.states',
         'app.tasks_users'
     ];
 

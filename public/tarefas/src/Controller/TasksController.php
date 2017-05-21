@@ -63,6 +63,14 @@ class TasksController extends AppController
             }
             $this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
+
+        $this->set('saved', false); //false by default - controls closure of overlay in which this is opened
+        if (!empty($this->request->data)) {
+            $this->User->create();
+            if ($this->User->save($this->request->data)){ 
+                $this->set('saved', true); //only set true if data saves OK
+            } 
+        }
         $types = $this->Tasks->Types->find('list', ['limit' => 200]);
         $states = $this->Tasks->States->find('list', ['limit' => 200]);
         $users = $this->Tasks->Users->find('list', ['limit' => 200]);

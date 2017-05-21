@@ -212,7 +212,10 @@ Type::build('timestamp')
  * Plugin::load('Migrations'); //Loads a single plugin named Migrations
  *
  */
-Plugin::load('TwitterBootstrap');
+    Plugin::load('TwitterBootstrap');
+    Plugin::load('Bootstrap');
+    Plugin::load('CakeJs');
+    
 /*
  * Only try to load DebugKit in development mode
  * Debug Kit should not be installed on a production system

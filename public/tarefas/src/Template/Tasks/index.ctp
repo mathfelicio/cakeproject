@@ -1,32 +1,42 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Task'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Types'), ['controller' => 'Types', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Type'), ['controller' => 'Types', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List States'), ['controller' => 'States', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New State'), ['controller' => 'States', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+<?= $this->Html->script('jquery.min') ?>
+<?= $this->Html->script('jquery-ui.min') ?>
+
+<div class="row">
+<nav class="col-md-2" id="actions-sidebar">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a><?= __('Actions') ?></a></li>
+        
+        <li><?= $this->Html->link(__('List {0}', ['Types']), ['controller' => 'Types', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New {0}', ['Type']), ['controller' => 'Types', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List {0}', ['States']), ['controller' => 'States', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New {0}', ['State']), ['controller' => 'States', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List {0}', ['Users']), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New {0}', ['User']), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="tasks index large-9 medium-8 columns content">
-    <h3><?= __('Tasks') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<div class="tasks index col-md-10 columns content">
+
+    <?= 
+        $this->Html->link(__('New {0}', ['Task']),
+            ['controller' => 'Tasks', 'action' => 'add'], 
+            ['class' => 'btn btn-primary pull-right overlay']);
+    ?>
+
+    <div id="dialogModal">
+         <div class="contentWrap"></div>
+    </div>
+
+    <h3>Tasks</h3>
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('type_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('state_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('type_id') ?></th>
+                <th><?= $this->Paginator->sort('state_id') ?></th>
+                <th><?= $this->Paginator->sort('title') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('modified') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -38,23 +48,50 @@
                 <td><?= h($task->title) ?></td>
                 <td><?= h($task->created) ?></td>
                 <td><?= h($task->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $task->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $task->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete # {0}?', $task->id)]) ?>
+                <td class="actions" style="white-space:nowrap">
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $task->id], ['class'=>'btn btn-default btn-xs']) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $task->id], ['class'=>'btn btn-primary btn-xs']) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete # {0}?', $task->id), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
     <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+        <center>
+            <ul class="pagination">
+                <?= $this->Paginator->prev('&laquo; ' . __('previous'), ['escape'=>false]) ?>
+                <?= $this->Paginator->numbers(['escape'=>false]) ?>
+                <?= $this->Paginator->next(__('next') . ' &raquo;', ['escape'=>false]) ?>
+            </ul>
+            <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} records out of
+         {{count}} total, starting on record {{start}}, ending on {{end}}')) ?></p>
+        </div>
+    </center>
 </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        //prepare the dialog
+        $( "#dialogModal" ).dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 500
+                },
+            hide: {
+                effect: "blind",
+                duration: 500
+                },
+            modal: true
+            });
+        //respond to click event on anything with 'overlay' class
+        $(".overlay").click(function(event){
+            event.preventDefault();
+            $('#contentWrap').load($(this).attr("href"));  //load content from href of link
+            $('#dialogModal').dialog('option', 'title', $(this).attr("title"));  //make dialog title that of link
+            $('#dialogModal').dialog('open');  //open the dialog
+            });
+        });
+</script>
