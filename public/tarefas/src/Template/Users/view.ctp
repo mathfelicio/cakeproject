@@ -21,7 +21,7 @@
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
-            <th>'Id</th>
+            <th>Id</th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>

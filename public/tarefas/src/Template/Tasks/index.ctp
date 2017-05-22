@@ -4,8 +4,6 @@
 <div class="row">
 <nav class="col-md-2" id="actions-sidebar">
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a><?= __('Actions') ?></a></li>
-        
         <li><?= $this->Html->link(__('List {0}', ['Types']), ['controller' => 'Types', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New {0}', ['Type']), ['controller' => 'Types', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List {0}', ['States']), ['controller' => 'States', 'action' => 'index']) ?></li>
@@ -16,50 +14,33 @@
 </nav>
 <div class="tasks index col-md-10 columns content">
 
-<!-- Button trigger modal -->
-<?=
-    $this->Html->link(
-        __('Add New Task'),
-        ['controller' => 'Tasks', 'action' => 'add'], 
-        [
-            'class' => 'btn btn-primary pull-right',
-            'data-toggle' => 'modal',
-            'data-target' => '#myModalNorm'
-        ]
-    );
-?>
+    <!-- Button trigger modal -->
+    <?=
+        $this->Html->link(
+            __('Add New Task'),
+            ['controller' => 'Tasks', 'action' => 'add'], 
+            [
+                'class' => 'btn btn-primary pull-right',
+                'data-toggle' => 'modal',
+                'data-target' => '#addNewTaskModal'
+            ]
+        );
+    ?>
 
-<!-- Modal -->
-<div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog" 
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" 
-                   data-dismiss="modal">
-                       <span aria-hidden="true">&times;</span>
-                       <span class="sr-only">Close</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    Create New Task
-                </h4>
-            </div>
-
-             <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                            Close
-                </button>
+    <!-- Modal -->
+    <div class="modal fade" id="addNewTaskModal" tabindex="-1" role="dialog" 
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    
             </div>
         </div>
     </div>
-</div>
 
-
-
+    <!-- 
+        Criar um AJAX para o cadastro de um novo tipo de tarefa 
+        dentro do forumulário de nova tarefa 
+    -->
           
     <h3>Tasks</h3>
     <table class="table table-striped table-hover">
