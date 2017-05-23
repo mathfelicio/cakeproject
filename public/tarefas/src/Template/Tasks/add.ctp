@@ -1,5 +1,8 @@
+<?= $this->Html->script('jquery.min'); ?>
 <?= $this->Html->css('select2'); ?>
+<?= $this->Html->script('select2'); ?>
 
+<div class="col-sm-5" style="padding-bottom: 10px">
 <div class="modal-body">
     <div class="modal-header">
         <h4 class="modal-title" id="addNewTaskModal">
@@ -63,10 +66,10 @@
         
     <?= $this->Form->end() ?>     
 </div>
+</div>
 
 
-<?= $this->Html->script('jquery.min'); ?>
-<?= $this->Html->script('select2'); ?>
+
 
 <script type="text/javascript">
   $('#id_label_multiple').select2();
