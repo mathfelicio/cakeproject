@@ -6,11 +6,9 @@ create table users (
 	modified datetime
 );
 
-create table users_types(
-	id int AUTO_INCREMENT PRIMARY KEY,
-	title VARCHARACTER(50)
-);
-
+ALTER TABLE `users`
+	ADD COLUMN `role` VARCHAR(20) NOT NULL AFTER `modified`;
+	
 create table states (
 	id int not null AUTO_INCREMENT primary key,
 	title VARCHARACTER(50),

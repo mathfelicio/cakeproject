@@ -9,11 +9,12 @@
 				<div class="caption">
 					<h3>Login</h3>
 				</div>
+                    <?= $this->Flash->render() ?>
                     <?= $this->Form->create(__('Login'), ['class' => 'loginForm']); ?>
                         <div class="input-group">
                             <?= $this->Form->control('Usuário', ['id' => 'name', 'class' => 'form-control', 'type' => 'text']); ?>
                             <?= $this->Form->control('Senha', ['id'=> 'paw', 'class' => 'form-control', 'type' => 'password']); ?>
-                            <?= $this->Form->button('Entrar', ['id' => 'submit', 'class' => 'btn btn-primary btn-hover form-control', 'type' => 'submit']); ?>                
+                            <?= $this->Form->button(__('Entrar'), ['id' => 'submit', 'class' => 'btn btn-primary btn-hover form-control', 'type' => 'submit']); ?>                
                         </div>
                     <?= $this->Form->end();?>
             </div>

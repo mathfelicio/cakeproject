@@ -48,32 +48,19 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->viewBuilder()->theme('TwitterBootstrap');
-        $this->loadComponent('Security');
-        $this->loadComponent('Csrf');
-
-        $this->loadComponent(
+ 
+         $this->loadComponent(
             'Auth', 
             [
-                'authorize' => 'Controller',
-                'authenticate' => 
-                [
-                    'Form' =>
-                    [
-                        'fields' => 
-                        [
-                            'username' => 'email',
-                            'password' => 'password'
-                        ]
-                    ]
+                'loginRedirect' => [
+                    'controller' => 'Tasks',
+                    'action' => 'index'
                 ],
 
-                'loginAction' =>
-                 [
+                'logoutRedirect' => [
                     'controller' => 'Users',
                     'action' => 'login'
-                 ],
-
-                 'unauthorizedRedirect' => $this->referer()
+                ]
             ]);
     }
 
@@ -90,5 +77,10 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view']);
     }
 }

@@ -55,20 +55,15 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+        return $validator
+            ->notEmpty('email', 'O email é necessário')
+            ->notEmpty('password', 'A senha é necessária')
+            ->notEmpty('role', 'Uma ocupação é necessária')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['admin', 'employee']],
+                'message' => 'Insira uma ocupação valida'
+            ]);
 
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        return $validator;
     }
 
     /**
