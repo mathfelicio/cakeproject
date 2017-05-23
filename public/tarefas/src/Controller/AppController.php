@@ -39,34 +39,21 @@ class AppController extends Controller
 
     public $helpers = ['CakeJs.Js'];
     
-    public function initialize()
+   public function initialize()
     {
-        parent::initialize();
-        
-
-        $this->set('project_name', 'Lista de Tarefas');
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
         $this->viewBuilder()->theme('TwitterBootstrap');
- 
-         $this->loadComponent(
-            'Auth', 
-            [
-                'loginRedirect' => [
-                    'controller' => 'Tasks',
-                    'action' => 'index'
-                ],
-
-                'logoutRedirect' => [
-                    'controller' => 'Users',
-                    'action' => 'login'
-                ]
-            ]);
-    }
-
-     public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index', 'view']);
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Users',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
     }
 
     /**

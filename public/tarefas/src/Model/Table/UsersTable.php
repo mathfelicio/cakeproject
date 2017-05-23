@@ -35,7 +35,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('email');
+        $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -47,36 +47,22 @@ class UsersTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
+   
     public function validationDefault(Validator $validator)
     {
-        return $validator
-            ->notEmpty('email', 'O email é necessário')
-            ->notEmpty('password', 'A senha é necessária')
-            ->notEmpty('role', 'Uma ocupação é necessária')
-            ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'employee']],
-                'message' => 'Insira uma ocupação valida'
-            ]);
+        $validator
+            ->integer('id')
+            ->allowEmpty('id', 'create');
 
-    }
+        $validator
+            ->requirePresence('password', 'create')
+            ->notEmpty('password', 'A password is required');
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['email']));
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email', 'An email is required');
 
-        return $rules;
+        return $validator;
     }
 }

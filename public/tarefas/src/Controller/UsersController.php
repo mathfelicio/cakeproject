@@ -17,7 +17,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'add']);
+        $this->Auth->allow(['index', 'view', 'add', 'login']);
     }
 
     /**
@@ -117,29 +117,23 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'logout']);
-    }
-
-    public function login()
+    
+      public function login()
     {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
-
+            var_dump($this->Auth->identify());
             if ($user) {
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-
-            $this->Flash->error(__('Usuário ou senha incorreto(s).'));
+            $this->Flash->error(__('Incorrect username or password, please try again.'));
         }
     }
 
     public function logout()
-    {
+    {   
+        $this->Flash->success('You are now logged out.');
         return $this->redirect($this->Auth->logout());
     }
 }
