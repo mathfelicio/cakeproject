@@ -9,7 +9,7 @@
 <div class="users form col-md-10 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= 'Add User' ?></legend>
+        <legend><?= __('Add User') ?></legend>
         <?=$this->Form->control('email');?>
         <?=$this->Form->control('password');?>
         <?=$this->Form->control('role', ['options' => ['admin' => 'Admin', 'employee' => 'Employee']]) ?>

@@ -64,6 +64,11 @@ class AppController extends Controller
             ]);
     }
 
+     public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view']);
+    }
+
     /**
      * Before render callback.
      *
@@ -77,10 +82,5 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
-    }
-
-    public function beforeFilter(Event $event)
-    {
-        $this->Auth->allow(['index', 'view']);
     }
 }
