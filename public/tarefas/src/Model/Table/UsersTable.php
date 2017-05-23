@@ -60,17 +60,16 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
 
         $validator
             ->requirePresence('role', 'create')
             ->notEmpty('role');
+
+        $validator
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
 
         return $validator;
     }
@@ -84,7 +83,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['username']));
 
         return $rules;
     }
