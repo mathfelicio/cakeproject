@@ -6,7 +6,7 @@
         <li><?= $this->Html->link(__('New {0}', 'Task'), ['controller' => 'Tasks', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="states form col-md-10 columns content">
+<div class="states form col-md-12 columns content">
     <?= $this->Form->create($state) ?>
     <fieldset>
         <legend><?= 'Add State' ?></legend>
