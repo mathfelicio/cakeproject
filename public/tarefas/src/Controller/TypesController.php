@@ -109,7 +109,3 @@ class TypesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function addNewTaskModal()
-    {
-        echo 'addNewTask';
-    }
