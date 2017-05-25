@@ -1,4 +1,3 @@
 <ul class="nav navbar-nav navbar-right">
-  <li><a href="#">Login</a></li>
-  <li><a href="#">Logout</a></li>
+  <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
 </ul>
