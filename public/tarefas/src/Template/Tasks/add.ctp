@@ -1,7 +1,3 @@
-<?= $this->Html->script('jquery.min'); ?>
-<?= $this->Html->css('select2'); ?>
-<?= $this->Html->script('select2'); ?>
-
 <div class="col-sm-5" style="padding-bottom: 20px">
 <div class="modal-body">
   
@@ -72,6 +68,10 @@
 </div>
 </div>
 
+<?= $this->Html->script('jquery.min'); ?>
+<?= $this->Html->css('select2'); ?>
+<?= $this->Html->script('select2'); ?>
+<script>$(".modal-content nav").hide();</script>
 <script type="text/javascript">
   $('#id_label_multiple').select2();
 </script>

@@ -25,3 +25,12 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+
+
+<?= $this->Html->script('jquery.min'); ?>
+<?= $this->Html->css('select2'); ?>
+<?= $this->Html->script('select2'); ?>
+<script>$(".modal-content nav").hide();</script>
+<script type="text/javascript">
+  $('#id_label_multiple').select2();
+</script>
