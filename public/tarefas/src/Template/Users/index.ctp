@@ -3,7 +3,7 @@
         <!-- Button trigger modal -->
     <?=
         $this->Html->link(
-            __('Add New Task'),
+            __('Add New User'),
             ['controller' => 'Users', 'action' => 'add'], 
             [
                 'class' => 'btn btn-primary pull-right',
@@ -44,7 +44,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id],  ['class'=>'btn btn-default btn-xs']) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class'=>'btn btn-primary btn-xs']) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->username)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->username), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
