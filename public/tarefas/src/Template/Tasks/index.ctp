@@ -56,7 +56,7 @@
                 <td class="actions" style="white-space:nowrap">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $task->id], ['class'=>'btn btn-default btn-xs']) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $task->id], ['class'=>'btn btn-primary btn-xs']) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete # {0}?', $task->id), 'class'=>'btn btn-danger btn-xs']) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete the task with the id of # {0}?', $task->id), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
