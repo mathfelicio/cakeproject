@@ -1,13 +1,12 @@
 <div class="row">
-<nav class="col-md-2" id="actions-sidebar">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a><?= __('Actions') ?></a></li>
-        <li><?= $this->Html->link(__('New {0}', ['State']), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List {0}', ['Tasks']), ['controller' => 'Tasks', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New {0}', ['Task']), ['controller' => 'Tasks', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="states index col-md-10 columns content">
+<div class="states index col-md-12 columns content">
+    <?= 
+        $this->Html->link(
+            __('Add new State'),
+            ['controller' => 'States', 'action' => 'add'],
+            ['class' => 'btn btn-primary pull-right']
+        ); 
+    ?>
     <h3>States</h3>
     <table class="table table-striped table-hover">
         <thead>

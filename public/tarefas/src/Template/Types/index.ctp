@@ -1,13 +1,12 @@
 <div class="row">
-<nav class="col-md-2" id="actions-sidebar">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a><?= __('Actions') ?></a></li>
-        <li><?= $this->Html->link(__('New {0}', ['Type']), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List {0}', ['Tasks']), ['controller' => 'Tasks', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New {0}', ['Task']), ['controller' => 'Tasks', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="types index col-md-10 columns content">
+<div class="types index col-md-12 columns content">
+   <?=
+    $this->Html->link(
+            __('Add new Type'),
+            ['controller' => 'Types', 'action' => 'add'],
+            ['class' => 'btn btn-primary pull-right']
+        );
+    ?>
     <h3>Types</h3>
     <table class="table table-striped table-hover">
         <thead>
@@ -29,7 +28,7 @@
                 <td class="actions" style="white-space:nowrap">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $type->id], ['class'=>'btn btn-default btn-xs']) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $type->id], ['class'=>'btn btn-primary btn-xs']) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $type->id], ['confirm' => __('Are you sure you want to delete # {0}?', $type->id), 'class'=>'btn btn-danger btn-xs']) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $type->id], ['confirm' => __('Are you sure you want to delete # {0}?', $type->title), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

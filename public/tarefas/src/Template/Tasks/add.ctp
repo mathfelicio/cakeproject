@@ -1,14 +1,21 @@
+<?= $this->Html->script('jquery.min'); ?>
 <?= $this->Html->css('select2'); ?>
+<?= $this->Html->script('select2'); ?>
 
+<div class="col-sm-5" style="padding-bottom: 20px">
 <div class="modal-body">
+  
+   <script>$(".modal-content nav").hide();</script>
+   
     <div class="modal-header">
         <h4 class="modal-title" id="addNewTaskModal">
             Create New Task
         </h4>
     </div>
 
-    <?= $this->Form->create($task, ['controller' => 'Tasks'],
-            ['id' => 'addModalForm', 'role' => 'form', 'class' => 'form-horizontal']) ?>
+    <?= $this->Form->create($task, 
+        ['controller' => 'Tasks'],
+        ['id' => 'addModalForm', 'role' => 'form', 'class' => 'form-horizontal']) ?>
 
         <div class="form-group">
             <div class="col-sm-10">
@@ -63,10 +70,7 @@
         
     <?= $this->Form->end() ?>     
 </div>
-
-
-<?= $this->Html->script('jquery.min'); ?>
-<?= $this->Html->script('select2'); ?>
+</div>
 
 <script type="text/javascript">
   $('#id_label_multiple').select2();

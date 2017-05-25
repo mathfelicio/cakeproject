@@ -2,17 +2,7 @@
 <?= $this->Html->script('jquery-ui.min') ?>
 
 <div class="row">
-<nav class="col-md-2" id="actions-sidebar">
-    <ul class="nav nav-pills nav-stacked">
-        <li><?= $this->Html->link(__('List {0}', ['Types']), ['controller' => 'Types', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New {0}', ['Type']), ['controller' => 'Types', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List {0}', ['States']), ['controller' => 'States', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New {0}', ['State']), ['controller' => 'States', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List {0}', ['Users']), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New {0}', ['User']), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="tasks index col-md-10 columns content">
+<div class="tasks index col-md-12 columns content">
 
     <!-- Button trigger modal -->
     <?=
@@ -31,7 +21,7 @@
     <div class="modal fade" id="addNewTaskModal" tabindex="-1" role="dialog" 
         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="padding-bottom: 350px">
+            <div class="modal-content">
             </div>
         </div>
     </div>
@@ -66,7 +56,7 @@
                 <td class="actions" style="white-space:nowrap">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $task->id], ['class'=>'btn btn-default btn-xs']) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $task->id], ['class'=>'btn btn-primary btn-xs']) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete # {0}?', $task->id), 'class'=>'btn btn-danger btn-xs']) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete the task with the id of # {0}?', $task->id), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

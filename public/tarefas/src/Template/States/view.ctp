@@ -1,23 +1,12 @@
-<nav class="col-lg-2 col-md-3">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href=""><?= __('Actions') ?></a></li>
-        <li><?= $this->Html->link(__('Edit {0}', ['State']), ['action' => 'edit', $state->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete {0}', ['State']), ['action' => 'delete', $state->id], ['confirm' => __('Are you sure you want to delete # {0}?', $state->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List {0}', ['States']), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New {0}', ['State']), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List {0}', ['Tasks']), ['controller' => 'Tasks', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New {0}', ['Task']), ['controller' => 'Tasks', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="states view col-lg-10 col-md-9">
-    <h3><?= h($state->title) ?></h3>
+<div class="states view col-lg-12 col-md-9">
+    <h3>State name: <?= h($state->title) ?></h3>
     <table class="table table-striped table-hover">
         <tr>
             <th>Title</th>
             <td><?= h($state->title) ?></td>
         </tr>
         <tr>
-            <th>'Id</th>
+            <th>Id</th>
             <td><?= $this->Number->format($state->id) ?></td>
         </tr>
         <tr>
@@ -51,11 +40,11 @@
                 <td><?= h($tasks->created) ?></td>
                 <td><?= h($tasks->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Tasks', 'action' => 'view', $tasks->id]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Tasks', 'action' => 'view', $tasks->id], ['class'=>'btn btn-default btn-xs']) ?>
 
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Tasks', 'action' => 'edit', $tasks->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Tasks', 'action' => 'edit', $tasks->id], ['class'=>'btn btn-primary btn-xs']) ?>
 
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Tasks', 'action' => 'delete', $tasks->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tasks->id)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Tasks', 'action' => 'delete', $tasks->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tasks->id), 'class'=>'btn btn-danger btn-xs']) ?>
 
                 </td>
             </tr>

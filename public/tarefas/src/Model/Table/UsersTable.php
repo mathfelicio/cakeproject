@@ -35,7 +35,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('id');
+        $this->setDisplayField('username');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -47,7 +47,12 @@ class UsersTable extends Table
         ]);
     }
 
-   
+    /**
+     * Default validation rules.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
     public function validationDefault(Validator $validator)
     {
         $validator
@@ -55,14 +60,31 @@ class UsersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('password', 'create')
-            ->notEmpty('password', 'A password is required');
+            ->requirePresence('username', 'create')
+            ->notEmpty('username');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email', 'An email is required');
+            ->requirePresence('role', 'create')
+            ->notEmpty('role');
+
+        $validator
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['username']));
+
+        return $rules;
     }
 }

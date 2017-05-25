@@ -1,14 +1,12 @@
 create table users (
 	id int AUTO_INCREMENT PRIMARY KEY,
-	email VARCHARACTER(255) not null,
+	username VARCHARACTER(255) not null,
+	role VARCHAR(20) NOT NULL,
 	password VARCHARACTER(255) not null,
 	created datetime,
 	modified datetime
 );
 
-ALTER TABLE `users`
-	ADD COLUMN `role` VARCHAR(20) NOT NULL AFTER `modified`;
-	
 create table states (
 	id int not null AUTO_INCREMENT primary key,
 	title VARCHARACTER(50),
@@ -46,3 +44,4 @@ create table tasks_users(
 
 
 
+$2y$10$19oFiS.Qeh1uNfy18XoOsu8giy75aAm6GjMTbq5wBPG0zRukokG16

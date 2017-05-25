@@ -41,6 +41,7 @@ class AppController extends Controller
     
    public function initialize()
     {
+        $this->set('project_name', 'Task List Maker');
         $this->viewBuilder()->theme('TwitterBootstrap');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [

@@ -1,14 +1,3 @@
-<nav class="col-lg-2 col-md-3">
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href=""><?= __('Actions') ?></a></li>
-        <li><?= $this->Html->link(__('Edit {0}', ['Type']), ['action' => 'edit', $type->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete {0}', ['Type']), ['action' => 'delete', $type->id], ['confirm' => __('Are you sure you want to delete # {0}?', $type->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List {0}', ['Types']), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New {0}', ['Type']), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List {0}', ['Tasks']), ['controller' => 'Tasks', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New {0}', ['Task']), ['controller' => 'Tasks', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="types view col-lg-10 col-md-9">
     <h3><?= h($type->title) ?></h3>
     <table class="table table-striped table-hover">
