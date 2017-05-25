@@ -26,11 +26,6 @@
         </div>
     </div>
 
-    <!-- 
-        Criar um AJAX para o cadastro de um novo tipo de tarefa 
-        dentro do forumulário de nova tarefa 
-    -->
-          
     <h3>Tasks</h3>
     <table class="table table-striped table-hover">
         <thead>
