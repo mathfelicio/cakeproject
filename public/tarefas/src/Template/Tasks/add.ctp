@@ -1,8 +1,6 @@
 <div class="col-sm-5" style="padding-bottom: 20px">
 <div class="modal-body">
   
-   <script>$(".modal-content nav").hide();</script>
-   
     <div class="modal-header">
         <h4 class="modal-title" id="addNewTaskModal">
             Create New Task
@@ -17,9 +15,9 @@
             <div class="col-sm-10">
                 <?= 
                     $this->Form->input('type_id',
-                            ['options' => $types, 'class' => 'form-control',
-                            'label' => ['text' => __('Type:'), 'class' => 'col-sm-2 control-label']]
-                        );
+                        ['options' => $types, 'class' => 'form-control',
+                        'label' => ['text' => __('Type:'), 'class' => 'col-sm-2 control-label']]
+                    );
                 ?>
             </div>
         </div>         
@@ -75,3 +73,4 @@
 <script type="text/javascript">
   $('#id_label_multiple').select2();
 </script>
+
