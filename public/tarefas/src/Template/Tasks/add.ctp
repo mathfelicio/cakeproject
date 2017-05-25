@@ -2,7 +2,7 @@
 <?= $this->Html->css('select2'); ?>
 <?= $this->Html->script('select2'); ?>
 
-<div class="col-sm-5" style="padding-bottom: 10px">
+<div class="col-sm-5" style="padding-bottom: 20px">
 <div class="modal-body">
     <div class="modal-header">
         <h4 class="modal-title" id="addNewTaskModal">
