@@ -6,30 +6,31 @@
         </h4>
     </div>
     <?= $this->Form->create($user) ?>
-    <fieldset>
-        <?php
-            echo $this->Form->input('username', ['class' => 'form-control',
-                                                    'label' => ['text' => __('Username:'), 'class' => 'col-sm-2 control-label']
+        <fieldset>
+            <?php
+                echo $this->Form->input('username', ['class' => 'form-control',
+                                                        'label' => ['text' => __('Username:'), 'class' => 'col-sm-2 control-label']
+                                                    ]
+                                       );
+
+                echo $this->Form->input('role', ['class' => 'form-control',
+                                                    'label' => ['text' => __('Role:'), 'class' => 'col-sm-2 control-label']
                                                 ]
-                                   );
-    
-            echo $this->Form->input('role', ['class' => 'form-control',
-                                                'label' => ['text' => __('Role:'), 'class' => 'col-sm-2 control-label']
-                                            ]
-                                   );
-    
-            echo $this->Form->input('password', ['class' => 'form-control',
-                                                    'label' => ['text' => __('Password:'), 'class' => 'col-sm-2 control-label']
-                                                ]
-                                   );
-    
-            echo $this->Form->input('tasks._ids', ['options' => $tasks, 
-                        'label'=> ['text' => __('Tasks:'), 'class' => 'col-sm-2 control-label'],
-                        'type' => 'select', 'multiple' => 'multiple', 
-                        'class' => 'form-control js-states js-example-basic-multiple', 'id' => 'id_label_multiple']
-                        );
-        ?>
-    </fieldset>
+                                       );
+
+                echo $this->Form->input('password', ['class' => 'form-control',
+                                                        'label' => ['text' => __('Password:'), 'class' => 'col-sm-2 control-label']
+                                                    ]
+                                       );
+
+                echo $this->Form->input('tasks._ids', 
+                                            ['options' => $tasks, 
+                                                'label'=> ['text' => __('Tasks:'), 'class' => 'col-sm-2 control-label'],
+                                                'type' => 'select', 'multiple' => 'multiple', 
+                                                'class' => 'form-control js-states js-example-basic-multiple', 'id' => 'id_label_multiple']
+                                        );
+            ?>
+        </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
     <?= $this->Form->end() ?>
 </div>
