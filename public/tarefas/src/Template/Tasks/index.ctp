@@ -1,5 +1,7 @@
 <?= $this->Html->script('jquery.min') ?>
 <?= $this->Html->script('jquery-ui.min') ?>
+<?= $this->Html->css('loading') ?>
+<?= $this->Html->script('loading') ?>
 
 <div class="row">
 <div class="tasks index col-md-12 columns content">
@@ -22,6 +24,7 @@
         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+            <div id="loader"></div>
             </div>
         </div>
     </div>
