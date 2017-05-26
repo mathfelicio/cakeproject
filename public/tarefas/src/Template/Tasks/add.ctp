@@ -1,3 +1,5 @@
+<?= $this->Html->script('jquery.min'); ?>
+
 <div class="col-sm-5" style="padding-bottom: 20px">
 <div class="modal-body">
   
@@ -7,22 +9,29 @@
         </h4>
     </div>
 
-    <?= $this->Form->create($task, 
-        ['controller' => 'Tasks'],
-        ['id' => 'addModalForm', 'role' => 'form', 'class' => 'form-horizontal']) ?>
+    <?= $this->Form->create() ?>
 
         <div class="form-group">
             <div class="col-sm-10">
                 <?= 
                     $this->Form->input('type_id',
                         ['options' => $types, 'class' => 'form-control',
-                        'label' => ['text' => __('Type:'), 'class' => 'col-sm-2 control-label']]
+                        'label' => ['text' => __('Type:'), 'id' => 'mainForm', 'class' => 'col-sm-2 control-label']]
                     );
                 ?>
+                
+                <script>
+                    var spanIcon = $(
+                        "<a href='#' id='toggleTypeModalBtn'>" 
+                            + "<span class='glyphicon glyphicon-plus pull-right'></span>" +
+                        "</a>"
+                    );
+                    
+                    $('#type-id').after(spanIcon);
+                </script>
             </div>
         </div>         
         
-
         <div class="form-group">
             <div class="col-sm-10">
                 <?= 
@@ -61,12 +70,23 @@
                 <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>    
             </div>
         </div>
-        
-    <?= $this->Form->end() ?>     
+    <?= $this->Form->end() ?>   
+    
+     <script>
+        $('#toggleTypeModalBtn').click(function(){
+            var formData = {
+                'type' : $('input[name=type_id]').val(),
+                'state': $('input[name=state_id]').val(),
+                'title': $('input[name=title]').val(),
+                'users': $('input[name=superheroAlias]').val(),
+            };
+
+            console.log(formData);
+        });
+    </script>  
 </div>
 </div>
 
-<?= $this->Html->script('jquery.min'); ?>
 <?= $this->Html->css('select2'); ?>
 <?= $this->Html->script('select2'); ?>
 <script>$(".modal-content nav").hide();</script>
