@@ -14,9 +14,9 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <?= 
-                    $this->Form->input('type_id',
-                        ['options' => $types, 'class' => 'form-control',
-                        'label' => ['text' => __('Type:'), 'id' => 'mainForm', 'class' => 'col-sm-2 control-label']]
+                    $this->Form->input('type_id', 
+                        ['options' => $types, 'class' => 'form-control', 'id' => 'typesInput',
+                        'label' => ['text' => __('Type:'), 'class' => 'col-sm-2 control-label']]
                     );
                 ?>
                 
@@ -27,7 +27,7 @@
                         "</a>"
                     );
                     
-                    $('#type-id').after(spanIcon);
+                    $('#typesInput').after(spanIcon);
                 </script>
             </div>
         </div>         
@@ -36,7 +36,7 @@
             <div class="col-sm-10">
                 <?= 
                     $this->Form->input('state_id',
-                            ['options' => $states, 'class' => 'form-control',
+                            ['options' => $states, 'class' => 'form-control', 'id' => 'statesInput',
                             'label' => ['text' => __('State:'), 'class' => 'col-sm-2 control-label']]
                         );
                 ?>    
@@ -47,7 +47,7 @@
             <div class="col-sm-10">
                 <?= 
                     $this->Form->input('title',
-                        ['class' => 'form-control',
+                        ['class' => 'form-control', 'id' => 'titleInput',
                         'label' => ['text' => __('Title:'), 'class' => 'col-sm-2 control-label']]
                     );
                 ?>    
@@ -75,10 +75,10 @@
      <script>
         $('#toggleTypeModalBtn').click(function(){
             var formData = {
-                'type' : $('input[name=type_id]').val(),
-                'state': $('input[name=state_id]').val(),
-                'title': $('input[name=title]').val(),
-                'users': $('input[name=superheroAlias]').val(),
+                'type' : $('#typesInput').val(),
+                'state': $('#statesInput').val(),
+                'title': $('#titleInput').val(),
+                'users': $('#id_label_multiple').val(),
             };
 
             console.log(formData);
@@ -90,7 +90,5 @@
 <?= $this->Html->css('select2'); ?>
 <?= $this->Html->script('select2'); ?>
 <script>$(".modal-content nav").hide();</script>
-<script type="text/javascript">
-  $('#id_label_multiple').select2();
-</script>
+<script type="text/javascript">$('#id_label_multiple').select2();</script>
 
